@@ -1,0 +1,67 @@
+- complementary:
+  - generic: DS
+  - text: DS總控台
+  - generic: 產品與客戶管理
+  - navigation:
+    - paragraph: 總覽
+    - button "▦ 營運儀表板":
+      - generic: ▦
+      - generic: 營運儀表板
+    - button "· 操作說明":
+      - generic: ·
+      - generic: 操作說明
+    - paragraph: 產品與服務
+    - button "▣ 產品管理":
+      - generic: ▣
+      - generic: 產品管理
+    - button "↗ 版本與發布":
+      - generic: ↗
+      - generic: 版本與發布
+    - paragraph: 客戶管理
+    - button "▥ 客戶公司":
+      - generic: ▥
+      - generic: 客戶公司
+    - paragraph: 營運管理
+    - button "▨ 使用量與額度":
+      - generic: ▨
+      - generic: 使用量與額度
+    - button "◌ 通知管理":
+      - generic: ◌
+      - generic: 通知管理
+    - button "≡ 操作紀錄":
+      - generic: ≡
+      - generic: 操作紀錄
+    - paragraph: 系統管理
+    - button "◎ 內部帳號":
+      - generic: ◎
+      - generic: 內部帳號
+    - button "⚙ 系統設定":
+      - generic: ⚙
+      - generic: 系統設定
+  - generic: 王
+  - text: 王小明
+  - generic: 系統管理員
+- main:
+  - paragraph: DS 總控台
+  - heading "操作說明" [level=1]
+  - generic: ⌕
+  - textbox "搜尋產品、客戶、功能或樣式"
+  - button "◌"
+  - button "新增"
+  - heading "總控台操作流程" [level=2]
+  - generic: 營運儀表板
+  - text: 掌握風險、待辦與近期發布
+  - generic: →
+  - generic: 產品管理
+  - text: 進入產品細節，管理功能、版本與客戶
+  - generic: →
+  - generic: 客戶公司
+  - text: 用同一列表篩選權限、到期、試用與停權狀態
+  - generic: →
+  - generic: 系統管理
+  - text: 維護職員帳號、個別權限與安全設定
+  - heading "最高管理員使用重點" [level=2]
+  - paragraph: 1. 每日先看儀表板。確認維護中功能、到期客戶、額度風險和待處理佇列。
+  - paragraph: 2. 產品相關工作從產品管理進入。列表只做查找；按管理後進產品細節，再處理功能、版本、使用客戶或官網樣式與內容版型。
+  - paragraph: 3. 客戶相關工作集中在客戶公司。用客戶視角篩選產品使用權、即將到期、試用與暫停終止，不拆側邊欄頁面。
+  - paragraph: 4. 權限異動走內部帳號。建立職員帳號後，直接在該職員身上設定可操作模組，權限來源一眼就能確認。

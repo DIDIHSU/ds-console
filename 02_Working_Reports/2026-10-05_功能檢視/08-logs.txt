@@ -1,0 +1,84 @@
+- complementary:
+  - generic: DS
+  - text: DS總控台
+  - generic: 產品與客戶管理
+  - navigation:
+    - paragraph: 總覽
+    - button "▦ 營運儀表板":
+      - generic: ▦
+      - generic: 營運儀表板
+    - button "· 操作說明":
+      - generic: ·
+      - generic: 操作說明
+    - paragraph: 產品與服務
+    - button "▣ 產品管理":
+      - generic: ▣
+      - generic: 產品管理
+    - button "↗ 版本與發布":
+      - generic: ↗
+      - generic: 版本與發布
+    - paragraph: 客戶管理
+    - button "▥ 客戶公司":
+      - generic: ▥
+      - generic: 客戶公司
+    - paragraph: 營運管理
+    - button "▨ 使用量與額度":
+      - generic: ▨
+      - generic: 使用量與額度
+    - button "◌ 通知管理":
+      - generic: ◌
+      - generic: 通知管理
+    - button "≡ 操作紀錄":
+      - generic: ≡
+      - generic: 操作紀錄
+    - paragraph: 系統管理
+    - button "◎ 內部帳號":
+      - generic: ◎
+      - generic: 內部帳號
+    - button "⚙ 系統設定":
+      - generic: ⚙
+      - generic: 系統設定
+  - generic: 王
+  - text: 王小明
+  - generic: 系統管理員
+- main:
+  - paragraph: DS 總控台
+  - heading "操作紀錄" [level=1]
+  - generic: ⌕
+  - textbox "搜尋產品、客戶、功能或樣式"
+  - button "◌"
+  - button "新增"
+  - heading "操作紀錄" [level=2]
+  - table:
+    - rowgroup:
+      - row "操作時間 操作人 操作內容 影響對象":
+        - columnheader "操作時間"
+        - columnheader "操作人"
+        - columnheader "操作內容"
+        - columnheader "影響對象"
+    - rowgroup:
+      - row "2026-08-13 10:24 王小明 關閉 HTML 自動檢查功能 HTML_CHECK":
+        - cell "2026-08-13 10:24"
+        - cell "王小明"
+        - cell "關閉 HTML 自動檢查功能"
+        - cell "HTML_CHECK"
+      - row "2026-08-13 09:40 張凱文 更新官網方案維護公告 WEB_PLAN":
+        - cell "2026-08-13 09:40"
+        - cell "張凱文"
+        - cell "更新官網方案維護公告"
+        - cell "WEB_PLAN"
+      - row "2026-08-12 18:31 林怡君 發布 E2B v2.8.3 E2B":
+        - cell "2026-08-12 18:31"
+        - cell "林怡君"
+        - cell "發布 E2B v2.8.3"
+        - cell "E2B"
+      - row "2026-08-12 15:10 陳雅婷 延長綠沐生活官網方案期限 C-1002":
+        - cell "2026-08-12 15:10"
+        - cell "陳雅婷"
+        - cell "延長綠沐生活官網方案期限"
+        - cell "C-1002"
+      - row "2026-08-11 16:42 王小明 新增內部帳號測試人員 IAM":
+        - cell "2026-08-11 16:42"
+        - cell "王小明"
+        - cell "新增內部帳號測試人員"
+        - cell "IAM"

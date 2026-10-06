@@ -1,0 +1,149 @@
+- complementary:
+  - generic: DS
+  - text: DS總控台
+  - generic: 產品與客戶管理
+  - navigation:
+    - paragraph: 總覽
+    - button "▦ 營運儀表板":
+      - generic: ▦
+      - generic: 營運儀表板
+    - button "· 操作說明":
+      - generic: ·
+      - generic: 操作說明
+    - paragraph: 產品與服務
+    - button "▣ 產品管理":
+      - generic: ▣
+      - generic: 產品管理
+    - button "↗ 版本與發布":
+      - generic: ↗
+      - generic: 版本與發布
+    - paragraph: 客戶管理
+    - button "▥ 客戶公司":
+      - generic: ▥
+      - generic: 客戶公司
+    - paragraph: 營運管理
+    - button "▨ 使用量與額度":
+      - generic: ▨
+      - generic: 使用量與額度
+    - button "◌ 通知管理":
+      - generic: ◌
+      - generic: 通知管理
+    - button "≡ 操作紀錄":
+      - generic: ≡
+      - generic: 操作紀錄
+    - paragraph: 系統管理
+    - button "◎ 內部帳號":
+      - generic: ◎
+      - generic: 內部帳號
+    - button "⚙ 系統設定":
+      - generic: ⚙
+      - generic: 系統設定
+  - generic: 王
+  - text: 王小明
+  - generic: 系統管理員
+- main:
+  - paragraph: DS 總控台
+  - heading "內部帳號" [level=1]
+  - generic: ⌕
+  - textbox "搜尋產品、客戶、功能或樣式"
+  - button "◌"
+  - button "新增"
+  - button "新增管理帳號"
+  - heading "職員帳號與權限" [level=2]
+  - table:
+    - rowgroup:
+      - row "職員 Email 部門／職稱 管理範圍 可操作模組 狀態 最後登入 操作":
+        - columnheader "職員"
+        - columnheader "Email"
+        - columnheader "部門／職稱"
+        - columnheader "管理範圍"
+        - columnheader "可操作模組"
+        - columnheader "狀態"
+        - columnheader "最後登入"
+        - columnheader "操作"
+    - rowgroup:
+      - row "王 王小明 最高管理員 admin@demo.local 系統管理 最高管理員 全系統 產品 客戶 營運 系統 啟用 2026-08-13 13:20 編輯 重設密碼":
+        - cell "王 王小明 最高管理員":
+          - generic: 王
+          - generic: 王小明
+          - text: 最高管理員
+        - cell "admin@demo.local"
+        - cell "系統管理 最高管理員":
+          - text: 系統管理
+          - text: 最高管理員
+        - cell "全系統"
+        - cell "產品 客戶 營運 系統":
+          - generic: 產品
+          - generic: 客戶
+          - generic: 營運
+          - generic: 系統
+        - cell "啟用":
+          - generic: 啟用
+        - cell "2026-08-13 13:20"
+        - cell "編輯 重設密碼":
+          - button "編輯"
+          - button "重設密碼"
+      - row "林 林怡君 產品負責人 pm@demo.local 產品營運 產品負責人 E2B 產品 客戶 營運 啟用 2026-08-12 18:06 編輯 重設密碼":
+        - cell "林 林怡君 產品負責人":
+          - generic: 林
+          - generic: 林怡君
+          - text: 產品負責人
+        - cell "pm@demo.local"
+        - cell "產品營運 產品負責人":
+          - text: 產品營運
+          - text: 產品負責人
+        - cell "E2B"
+        - cell "產品 客戶 營運":
+          - generic: 產品
+          - generic: 客戶
+          - generic: 營運
+        - cell "啟用":
+          - generic: 啟用
+        - cell "2026-08-12 18:06"
+        - cell "編輯 重設密碼":
+          - button "編輯"
+          - button "重設密碼"
+      - row "張 張凱文 官網方案負責人 web@demo.local 網站服務 官網方案負責人 官網方案 產品 客戶 啟用 2026-08-13 09:44 編輯 重設密碼":
+        - cell "張 張凱文 官網方案負責人":
+          - generic: 張
+          - generic: 張凱文
+          - text: 官網方案負責人
+        - cell "web@demo.local"
+        - cell "網站服務 官網方案負責人":
+          - text: 網站服務
+          - text: 官網方案負責人
+        - cell "官網方案"
+        - cell "產品 客戶":
+          - generic: 產品
+          - generic: 客戶
+        - cell "啟用":
+          - generic: 啟用
+        - cell "2026-08-13 09:44"
+        - cell "編輯 重設密碼":
+          - button "編輯"
+          - button "重設密碼"
+      - row "測 測試帳號 檢視人員 viewer@demo.local 測試 檢視人員 唯讀 僅檢視 停權 2026-08-01 10:12 編輯 重設密碼":
+        - cell "測 測試帳號 檢視人員":
+          - generic: 測
+          - generic: 測試帳號
+          - text: 檢視人員
+        - cell "viewer@demo.local"
+        - cell "測試 檢視人員":
+          - text: 測試
+          - text: 檢視人員
+        - cell "唯讀"
+        - cell "僅檢視":
+          - generic: 僅檢視
+        - cell "停權":
+          - generic: 停權
+        - cell "2026-08-01 10:12"
+        - cell "編輯 重設密碼":
+          - button "編輯"
+          - button "重設密碼"
+  - heading "新增帳號流程" [level=2]
+  - generic: 1. 建立職員帳號
+  - text: 輸入姓名、Email、部門職稱與管理範圍。
+  - generic: 2. 直接設定權限
+  - text: 在職員身上勾選可操作的產品、客戶、營運與系統模組。
+  - generic: 3. 寄送啟用通知
+  - text: 系統寄送邀請信，職員首次登入後設定密碼。

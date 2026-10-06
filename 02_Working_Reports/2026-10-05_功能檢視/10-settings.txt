@@ -1,0 +1,81 @@
+- complementary:
+  - generic: DS
+  - text: DS總控台
+  - generic: 產品與客戶管理
+  - navigation:
+    - paragraph: 總覽
+    - button "▦ 營運儀表板":
+      - generic: ▦
+      - generic: 營運儀表板
+    - button "· 操作說明":
+      - generic: ·
+      - generic: 操作說明
+    - paragraph: 產品與服務
+    - button "▣ 產品管理":
+      - generic: ▣
+      - generic: 產品管理
+    - button "↗ 版本與發布":
+      - generic: ↗
+      - generic: 版本與發布
+    - paragraph: 客戶管理
+    - button "▥ 客戶公司":
+      - generic: ▥
+      - generic: 客戶公司
+    - paragraph: 營運管理
+    - button "▨ 使用量與額度":
+      - generic: ▨
+      - generic: 使用量與額度
+    - button "◌ 通知管理":
+      - generic: ◌
+      - generic: 通知管理
+    - button "≡ 操作紀錄":
+      - generic: ≡
+      - generic: 操作紀錄
+    - paragraph: 系統管理
+    - button "◎ 內部帳號":
+      - generic: ◎
+      - generic: 內部帳號
+    - button "⚙ 系統設定":
+      - generic: ⚙
+      - generic: 系統設定
+  - generic: 王
+  - text: 王小明
+  - generic: 系統管理員
+- main:
+  - paragraph: DS 總控台
+  - heading "系統設定" [level=1]
+  - generic: ⌕
+  - textbox "搜尋產品、客戶、功能或樣式"
+  - button "◌"
+  - button "新增"
+  - generic: 安全基準
+  - generic: 已啟用
+  - generic: 雙因素驗證與敏感操作確認
+  - generic: 稽核保存
+  - generic: 365 天
+  - generic: 保留操作、通知與權限異動
+  - generic: 資料匯出
+  - generic: 指定職員
+  - generic: 由內部帳號直接控管匯出權限
+  - heading "登入與操作安全" [level=2]
+  - generic: 控管管理員登入、閒置逾時與高風險操作。
+  - generic: 管理員雙因素驗證
+  - generic: 所有最高管理員登入時必須完成第二步驗證。
+  - button "總開關"
+  - generic: 閒置自動登出
+  - generic: 降低共用電腦或長時間未操作造成的帳號風險。
+  - button "30 分鐘"
+  - generic: 敏感操作二次確認
+  - generic: 產品總開關、權限、期限異動需輸入原因並留下紀錄。
+  - button "總開關"
+  - heading "資料與稽核" [level=2]
+  - generic: 管理資料留存、通知紀錄與匯出權限。
+  - generic: 操作紀錄保存
+  - generic: 保存操作人、操作內容、影響對象與時間。
+  - button "365 天"
+  - generic: 通知寄送紀錄
+  - generic: 追蹤維護、到期、額度、品牌樣式與內容版型檢查通知。
+  - button "總開關"
+  - generic: 匯出權限控管
+  - generic: 只有已開啟系統管理權限的職員可匯出客戶、權限與操作紀錄。
+  - button "總開關"

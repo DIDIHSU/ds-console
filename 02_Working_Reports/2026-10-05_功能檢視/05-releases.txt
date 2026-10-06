@@ -1,0 +1,101 @@
+- complementary:
+  - generic: DS
+  - text: DS總控台
+  - generic: 產品與客戶管理
+  - navigation:
+    - paragraph: 總覽
+    - button "▦ 營運儀表板":
+      - generic: ▦
+      - generic: 營運儀表板
+    - button "· 操作說明":
+      - generic: ·
+      - generic: 操作說明
+    - paragraph: 產品與服務
+    - button "▣ 產品管理":
+      - generic: ▣
+      - generic: 產品管理
+    - button "↗ 版本與發布":
+      - generic: ↗
+      - generic: 版本與發布
+    - paragraph: 客戶管理
+    - button "▥ 客戶公司":
+      - generic: ▥
+      - generic: 客戶公司
+    - paragraph: 營運管理
+    - button "▨ 使用量與額度":
+      - generic: ▨
+      - generic: 使用量與額度
+    - button "◌ 通知管理":
+      - generic: ◌
+      - generic: 通知管理
+    - button "≡ 操作紀錄":
+      - generic: ≡
+      - generic: 操作紀錄
+    - paragraph: 系統管理
+    - button "◎ 內部帳號":
+      - generic: ◎
+      - generic: 內部帳號
+    - button "⚙ 系統設定":
+      - generic: ⚙
+      - generic: 系統設定
+  - generic: 王
+  - text: 王小明
+  - generic: 系統管理員
+- main:
+  - paragraph: DS 總控台
+  - heading "版本與發布" [level=1]
+  - generic: ⌕
+  - textbox "搜尋產品、客戶、功能或樣式"
+  - button "◌"
+  - button "新增"
+  - heading "版本與發布" [level=2]
+  - table:
+    - rowgroup:
+      - row "產品 版本 發布項目 發布範圍 發布時間 發布人員":
+        - columnheader "產品"
+        - columnheader "版本"
+        - columnheader "發布項目"
+        - columnheader "發布範圍"
+        - columnheader "發布時間"
+        - columnheader "發布人員"
+    - rowgroup:
+      - row "E2B v2.8.3 訂單同步錯誤修正 全部客戶 2026-08-12 18:30 林怡君":
+        - cell "E2B"
+        - cell "v2.8.3"
+        - cell "訂單同步錯誤修正"
+        - cell "全部客戶"
+        - cell "2026-08-12 18:30"
+        - cell "林怡君"
+      - row "官網方案 v1.6.0 HTML 檢查規則更新 指定客戶測試 2026-08-13 09:00 張凱文":
+        - cell "官網方案"
+        - cell "v1.6.0"
+        - cell "HTML 檢查規則更新"
+        - cell "指定客戶測試"
+        - cell "2026-08-13 09:00"
+        - cell "張凱文"
+      - row "E2B v2.8.0 Data Hub 欄位映射改善 全部客戶 2026-08-05 14:00 王小明":
+        - cell "E2B"
+        - cell "v2.8.0"
+        - cell "Data Hub 欄位映射改善"
+        - cell "全部客戶"
+        - cell "2026-08-05 14:00"
+        - cell "王小明"
+      - row "官網方案 v1.5.4 品牌樣式與內容版型結構驗證 內部測試 2026-08-01 11:20 陳雅婷":
+        - cell "官網方案"
+        - cell "v1.5.4"
+        - cell "品牌樣式與內容版型結構驗證"
+        - cell "內部測試"
+        - cell "2026-08-01 11:20"
+        - cell "陳雅婷"
+  - heading "發布檢查清單" [level=2]
+  - checkbox "功能測試通過" [checked]
+  - text: 功能測試通過
+  - checkbox "指定客戶測試確認" [checked]
+  - text: 指定客戶測試確認
+  - checkbox "異動紀錄已建立" [checked]
+  - text: 異動紀錄已建立
+  - checkbox "通知內容已確認"
+  - text: 通知內容已確認
+  - checkbox "可回復版本已標記"
+  - text: 可回復版本已標記
+  - button "建立模擬發布"
