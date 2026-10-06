@@ -21,6 +21,10 @@ GitHub 儲存庫：https://github.com/DIDIHSU/ds-console
 
 ## 最新前端 Demo
 
+線上操作：[DS總控台最新 UI](https://didihsu.github.io/ds-console/)。
+
+GitHub Actions 會在 `main` 分支的最新版程式更新後，重新建置、檢查並發布 Demo。Pages 僅發布網頁、樣式及程式 bundle；需求文件、進度與歷史版本仍完整保留在儲存庫，可透過 clone 下載。發布狀態可在 GitHub 的 Actions → Publish latest UI to Pages 查看。
+
 最新版固定位置：
 
 ```text
