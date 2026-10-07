@@ -59,39 +59,3 @@ assert.equal(companyEntitlements(companyState,{productFilter:'web',filter:'已�
 assert.equal(companyEntitlements(companyState,{productFilter:'all',filter:'全部'},splitCompany).length,2);
 assert.equal(companyEntitlements(companyState,{productFilter:'e2b',filter:'有效使用權'},splitCompany).length,1);
 console.log('Passed: company product/status filters apply to the same entitlement, grouped rights preserved.');
-
-// Dashboard boundaries: product filtering, period vs snapshot, and company deduplication.
-const {dashboardOperations,dashboardCustomers,dashboard}=await import('./src/dashboard.js');
-const {companyPage,companyDetail}=await import('./src/screens.js');
-const dashState=seedState();
-const e30=dashboardOperations({dashProduct:'e2b',dashPeriod:30});
-const e7=dashboardOperations({dashProduct:'e2b',dashPeriod:7});
-assert.ok(e30.every(r=>r.product==='e2b'));
-assert.ok(dashboardOperations({dashProduct:'web',dashPeriod:90}).every(r=>r.product==='web'));
-assert.ok(e7.reduce((n,r)=>n+r.jobs,0)<e30.reduce((n,r)=>n+r.jobs,0));
-assert.equal(e7.reduce((n,r)=>n+r.queue,0),e30.reduce((n,r)=>n+r.queue,0));
-for(const period of [7,30,90])for(const r of dashboardOperations({dashProduct:'all',dashPeriod:period})){
- assert.ok(r.failed<=r.jobs);assert.ok(r.retryCost<=r.cost);
-}
-const dc=dashboardCustomers(dashState,{dashProduct:'all'});
-assert.equal(dc.companies.length,8);assert.equal(dc.effective,6);
-assert.equal(dashboardCustomers(dashState,{dashProduct:'e2b'}).effective,3);
-assert.equal(dashboardCustomers(dashState,{dashProduct:'web'}).effective,3);
-// Make the same company active in both products: count once overall, once per product.
-dashState.entitlements.find(e=>e.company==='c1'&&e.product==='web').end='2027-09-30';
-assert.equal(dashboardCustomers(dashState,{dashProduct:'all'}).effective,6);
-assert.equal(dashboardCustomers(dashState,{dashProduct:'web'}).effective,4);
-const listView={filter:'全部',productFilter:'all',query:'',sort:'default',tablePages:{}};
-const listHtml=companyPage(dashState,listView);
-assert.ok(!listHtml.includes('data-action="entitlementEdit"'));
-assert.ok(!listHtml.includes('<th scope="col">帳號名額</th>'));
-const detailHtml=companyDetail(dashState,{id:'c1',companyProduct:'web',detailTab:'users',...listView});
-assert.ok(detailHtml.includes('data-action="entitlementEdit"'));
-assert.ok(detailHtml.includes('付款狀態'));
-// Adding another product does not add a column or a per-product action to the company list.
-dashState.products.push({id:'extra',name:'第三產品'});
-dashState.entitlements.push({...dashState.entitlements[0],id:'extra-ent',product:'extra'});
-assert.equal((companyPage(dashState,listView).match(/<th scope=/g)||[]).length,7);
-assert.ok(companyPage(dashState,listView).includes('3 項產品'));
-for(const dashMode of ['product','customer'])assert.ok(dashboard(seedState(),{dashMode,dashProduct:'all',dashPeriod:30}).includes('規劃展示'));
-console.log('Passed: dashboard product filters, snapshot/period separation, company deduplication, company/detail boundaries and third-product scalability.');
