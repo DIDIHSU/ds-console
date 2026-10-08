@@ -3,15 +3,13 @@ import { DEMO_DATE } from './data.js';
 import { daysUntil,companyOf,productOf,entitlementOf,members,seats,serviceStatus,accountAccess,featureAccess } from './model.js';
 import { esc,status,btn,link,section,field,select,note,progress,tabs } from './ui.js';
 export const navigation = [
-  ['工作台',[['overview','營運總覽'],['companies','客戶公司'],['messages','客戶訊息'],['care','客戶關懷']]],
+  ['工作台',[['overview','營運總覽'],['companies','客戶公司']]],
   ['產品與官網',[['products','產品與功能'],['plans','方案管理'],['releases','版本與發布']]],
-  ['營運管理',[['quotas','使用量與額度'],['notifications','通知中心'],['tasks','營運待辦'],['logs','操作紀錄']]],
+  ['營運管理',[['quotas','使用量與額度'],['notifications','通知中心'],['tasks','待處理事項'],['logs','操作紀錄']]],
   ['系統',[['staff','內部帳號'],['settings','系統設定'],['guide','展示與需求說明']]]
 ];
 export const titles = {
- messages:['客戶訊息','分流系統內使用支援與 DS 自家官網諮詢，指派、回覆並追蹤案件。'],
- care:['客戶關懷','以使用訊號發現需求，透過 AI 整理與人員審核完成客戶關懷。'],
-  overview:['營運總覽','查看各產品與客戶的目前狀況，選擇產品後深入了解功能使用。'],features:['功能管理','各產品既有功能、開放範圍與維護設定。'],entitlements:['產品使用權','分產品查看到期、試用、等待開通與暫停服務。'],tasks:['營運待辦','追蹤產品維運、客戶服務與帳務工作，前往管理頁執行並記錄處理進度。'],
+  overview:['營運總覽','從產品健康、AI 消耗到客戶服務，切換視角掌握營運。'],features:['功能管理','各產品既有功能、開放範圍與維護設定。'],entitlements:['產品使用權','分產品查看到期、試用、等待開通與暫停服務。'],tasks:['待處理事項','追蹤開通、維護、到期與檢查事項。'],
   companies:['客戶公司','查看客戶公司概況；進入公司後依產品管理服務與帳號。'],
   users:['產品用戶','E2B 與官網分別邀請、分別管理帳號。'],
   products:['產品與功能','控制產品運行、功能狀態與客戶開放範圍。'],
@@ -60,7 +58,7 @@ export function overview(s,v) {
 export function companyDetail(s,v) {
   const c=companyOf(s,v.id)||s.companies[0];const es=s.entitlements.filter(e=>e.company===c.id);if(!es.some(e=>e.product===v.companyProduct))v.companyProduct=es[0]?.product||'e2b';const e=es.find(e=>e.product===v.companyProduct);
   if(!e)return section(esc(c.name),'此公司目前沒有關聯產品服務。',btn('編輯公司資料','companyEdit',`data-id="${c.id}"`,'ghost'));const plan=s.plans.find(p=>p.id===e?.plan);const n=e?seats(s,e):null;const st=e?serviceStatus(s,e):null;
-  return `<div class="detail-identity"><div class="entity large"><span class="monogram">${c.short[0]}</span><div><span class="eyebrow">${c.code} / ${c.industry}</span><h2 class="company-name-status">${esc(c.name)}${status(c.enabled?'公司正常':'公司已暫停',c.enabled?'ok':'bad')}</h2><p>${c.contact} · ${c.email} <span class="divider">|</span> 負責人 ${c.owner}</p></div></div><div class="identity-actions">${btn('編輯公司資料','companyEdit',`data-id="${c.id}"`,'secondary')}${btn(c.enabled?'暫停整間公司':'恢復整間公司','sensitive',`data-kind="company" data-id="${c.id}"`,c.enabled?'danger-outline':'secondary')}</div></div>`+tabs(es.map(e=>[e.product,productOf(s,e.product).name]),v.companyProduct,'companyProduct')+`<div class="service-summary"><div><span class="eyebrow">${productOf(s,e.product).billing}</span><h3>${plan.name}</h3><p>服務期間 ${e.start} — ${e.end}</p><small>付款狀態：${esc(e.payment)} · ${esc(e.mode||'正式服務')}</small><small>方案名稱與席次為展示資料</small></div><div><span>使用權狀態</span>${status(st.label,st.tone)}<small>${st.reason}</small></div><div><span>帳號名額</span><strong>${n.used}<small> / ${n.limit}</small></strong><p>${n.active} 啟用 · ${n.invited} 邀請中 · ${n.inactive} 停用</p>${progress(n.used,n.limit)}</div><div class="service-actions company-service-actions"><h4>產品服務操作</h4>${btn('管理方案與使用權','entitlementEdit',`data-id="${e.id}"`,'primary')}</div></div>`+tabs([['users','產品用戶',members(s,e).length],['features','功能權限'],['usage','使用量'],...(e.product==='web'?[['website','官網設定']]:[]),['history','異動紀錄']],v.detailTab,'detailTab')+companyTab(s,v,c,e);
+  return `<div class="detail-identity"><div class="entity large"><span class="monogram">${c.short[0]}</span><div><span class="eyebrow">${c.code} / ${c.industry}</span><h2>${c.name}</h2><p>${c.contact} · ${c.email} <span class="divider">|</span> 負責人 ${c.owner}</p></div></div><div class="identity-actions">${btn('編輯公司資料','companyEdit',`data-id="${c.id}"`,'ghost')}${status(c.enabled?'公司正常':'公司已暫停')}${btn(c.enabled?'暫停整間公司':'恢復整間公司','sensitive',`data-kind="company" data-id="${c.id}"`,c.enabled?'danger-outline':'secondary')}</div></div>`+tabs(es.map(e=>[e.product,productOf(s,e.product).name]),v.companyProduct,'companyProduct')+`<div class="service-summary"><div><span class="eyebrow">${productOf(s,e.product).billing}</span><h3>${plan.name}</h3><p>服務期間 ${e.start} — ${e.end}</p><small>付款狀態：${esc(e.payment)} · ${esc(e.mode||'正式服務')}</small><small>方案名稱與席次為展示資料</small></div><div><span>使用權狀態</span>${status(st.label,st.tone)}<small>${st.reason}</small></div><div><span>帳號名額</span><strong>${n.used}<small> / ${n.limit}</small></strong><p>${n.active} 啟用 · ${n.invited} 邀請中 · ${n.inactive} 停用</p>${progress(n.used,n.limit)}</div><div class="service-actions">${btn('管理方案與使用權','entitlementEdit',`data-id="${e.id}"`,'ghost')}${btn('延長期限','extendTerm',`data-id="${e.id}"`,'ghost')}${btn('修改使用期限','editTerm',`data-id="${e.id}"`)}${btn(e.enabled?'暫停此產品':'恢復此產品','sensitive',`data-kind="entitlement" data-id="${e.id}"`,'ghost')}</div></div>`+tabs([['users','產品用戶',members(s,e).length],['features','功能權限'],['usage','使用量'],...(e.product==='web'?[['website','官網設定']]:[]),['history','異動紀錄']],v.detailTab,'detailTab')+companyTab(s,v,c,e);
 }
 function companyTab(s,v,c,e) {
   if(v.detailTab==='features')return note('展示「系統預設」與「強制關閉」。額外開啟的優先序仍待確認；畫面不將它當成已定案規則。')+table(v,'companyFeatures',['功能／代碼','開放範圍','客戶權限','最終狀態','原因','操作'],s.features.filter(f=>f.product===e.product).map(f=>{const a=featureAccess(s,c.id,f);return {search:f.name,cells:[`<b>${f.name}</b><small class="mono">${f.code}</small>`,f.scope,a.mode,status(a.label,a.tone),`<span class="reason">${esc(a.reason)}</span>`,btn('查看判斷','inspectAccess',`data-company="${c.id}" data-id="${f.id}"`,'small ghost')]};}));
@@ -102,6 +100,3 @@ export function basicPage(s,v) {
   if(v.page==='guide')return guidePage();
   return '';
 }
-
-
-

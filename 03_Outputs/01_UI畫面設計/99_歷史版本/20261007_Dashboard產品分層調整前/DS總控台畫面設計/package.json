@@ -1,0 +1,13 @@
+{
+  "name": "ds-console-demo",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node build.js",
+    "check": "node check.js && node --check src/app.bundle.js && node --check server.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -64,26 +64,15 @@ console.log('Passed: company product/status filters apply to the same entitlemen
 const {dashboardOperations,dashboardCustomers,dashboard}=await import('./src/dashboard.js');
 const {companyPage,companyDetail}=await import('./src/screens.js');
 const dashState=seedState();
-const e2bRows=dashboardOperations({dashProduct:'e2b'});
-assert.ok(e2bRows.every(r=>r.product==='e2b'));
-assert.ok(dashboardOperations({dashProduct:'web'}).every(r=>r.product==='web'));
-assert.deepEqual(dashboardOperations({dashProduct:'all'}),[]);
-assert.deepEqual(dashboardOperations({dashProduct:'unknown'}),[]);
-assert.ok(e2bRows.every(r=>r.daily.length===7&&r.used===r.daily.reduce((a,b)=>a+b,0)));
-const allHtml=dashboard(dashState,{dashMode:'product',dashProduct:'all'});
-for(const forbidden of ['已結束任務','任務成功率','NT$','區段 1','文字 Token','每日用量'])assert.ok(!allHtml.includes(forbidden));
-assert.ok(allHtml.includes('2026-09-29 — 2026-10-05'));
-const unknownState=seedState();unknownState.products.push({id:'extra',name:'第三產品',enabled:true});
-const unknownHtml=dashboard(unknownState,{dashMode:'product',dashProduct:'extra'});
-assert.ok(unknownHtml.includes('尚未提供監控'));
-assert.ok(!unknownHtml.includes('網站發布'));
-assert.ok(!unknownHtml.includes('商品文案'));
-const e2bHtml=dashboard(dashState,{dashMode:'product',dashProduct:'e2b'});
-assert.ok(e2bHtml.includes('09/29'));
-assert.ok(!e2bHtml.includes('訪客表單送出'));
-const webHtml=dashboard(dashState,{dashMode:'product',dashProduct:'web'});
-assert.ok(webHtml.includes('訪客表單送出'));
-assert.ok(!webHtml.includes('AI 商品文案生成'));
+const e30=dashboardOperations({dashProduct:'e2b',dashPeriod:30});
+const e7=dashboardOperations({dashProduct:'e2b',dashPeriod:7});
+assert.ok(e30.every(r=>r.product==='e2b'));
+assert.ok(dashboardOperations({dashProduct:'web',dashPeriod:90}).every(r=>r.product==='web'));
+assert.ok(e7.reduce((n,r)=>n+r.jobs,0)<e30.reduce((n,r)=>n+r.jobs,0));
+assert.equal(e7.reduce((n,r)=>n+r.queue,0),e30.reduce((n,r)=>n+r.queue,0));
+for(const period of [7,30,90])for(const r of dashboardOperations({dashProduct:'all',dashPeriod:period})){
+ assert.ok(r.failed<=r.jobs);assert.ok(r.retryCost<=r.cost);
+}
 const dc=dashboardCustomers(dashState,{dashProduct:'all'});
 assert.equal(dc.companies.length,8);assert.equal(dc.effective,6);
 assert.equal(dashboardCustomers(dashState,{dashProduct:'e2b'}).effective,3);
@@ -105,4 +94,4 @@ dashState.entitlements.push({...dashState.entitlements[0],id:'extra-ent',product
 assert.equal((companyPage(dashState,listView).match(/<th scope=/g)||[]).length,7);
 assert.ok(companyPage(dashState,listView).includes('3 項產品'));
 for(const dashMode of ['product','customer'])assert.ok(dashboard(seedState(),{dashMode,dashProduct:'all',dashPeriod:30}).includes('規劃展示'));
-console.log('Passed: dashboard common overview, per-product units, missing data and dated usage, company deduplication, company/detail boundaries and third-product scalability.');
+console.log('Passed: dashboard product filters, snapshot/period separation, company deduplication, company/detail boundaries and third-product scalability.');

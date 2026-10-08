@@ -13,7 +13,7 @@ const server = createServer(async (req, res) => {
     const file = normalize(join(root, pathname));
     if (!file.startsWith(root)) throw new Error("Invalid path");
     const data = await readFile(file);
-    res.writeHead(200, { "Content-Type": types[extname(file)] || "application/octet-stream", "Cache-Control": "no-store" });
+    res.writeHead(200, { "Content-Type": types[extname(file)] || "application/octet-stream" });
     res.end(data);
   } catch {
     res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
